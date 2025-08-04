@@ -1,0 +1,167 @@
+.photo {
+    width: 100vw;
+    height: 50vw;
+    object-fit: cover;
+    box-shadow: 0px -5px 15px 5px black;
+}
+
+#main {
+    overflow: scroll;
+}
+
+p, h1 {
+    margin: 0; 
+}
+
+.desc {
+    font-size: smaller;
+}
+
+p {
+    font-size: small;
+}
+
+li > a {
+    text-decoration: none;
+    color: black;
+}
+
+.ratings {
+    display: flex;
+    justify-content: space-between;
+    margin-right: 5px;
+}
+
+#see-reviews, #leave-review {
+    text-decoration: underline;
+    text-align: center;
+}
+
+#write-review {
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    transition: all 0.3s ease-out;
+    background-color: #0000009e;
+    opacity: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: -1;
+
+}
+
+#write-review.active {
+    opacity: 1 !important;
+    z-index: 1;
+}
+
+.review-container {
+    background-color: var(--primary);
+    border-radius: 10px;
+    width: 80%;
+    height: 40%;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+    gap: 10px;
+}
+
+.review-data {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    width: 90%;
+}
+
+#review-text {
+    width: 100%;
+}
+
+#star-ratings {
+    display: flex;
+    flex-direction: row;
+}
+
+.checked {
+    color:orange;
+}
+
+
+
+
+.actions {
+    position: absolute;
+    top: 60px;
+    right: 15px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    align-items: flex-end;
+}
+
+.actions > i {
+    margin: 18px 0px;
+}
+
+#star-recipe::before, #add-cart::before {
+    background: var(--background);
+    padding: 5px;
+    border: 1px solid var(--primary);
+    border-radius: 200px;
+}
+
+
+#star-recipe.fa-star.checked {
+    color: orange;
+}
+
+#star-recipe.fa-spinner {
+    animation: spin-animation 1.2s infinite;
+}
+
+@keyframes spin-animation {
+    0% {
+      transform: rotate(0deg);
+    }
+    100% {
+      transform: rotate(359deg);
+    }
+}
+
+.title-container {
+    display: grid;
+    grid-template-columns: 80% 20%;
+}
+
+#people-container {
+    display: flex;
+    align-items: center;
+    gap: 2px;
+}
+
+#no_people {
+    width: 1.2em;
+}
+
+.adders {
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+    width: 5px; 
+}
+
+.adders > i {
+    border: 1px solid var(--secondary);
+    background-color: var(--primary);
+    color: var(--background);
+    border-radius: 100%;
+    width: 12.5px;
+    height: 12.5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}

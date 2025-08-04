@@ -1,0 +1,118 @@
+#details{
+    display: grid;
+    padding: 20px;
+    grid-template-columns: 33% 33% 33%;
+    grid-template-rows: 8vw 16vw auto 9vw;
+}
+
+#profile-picture{
+    
+    grid-column-start: 1;
+    grid-column-end: 2;
+    width: 75%;   
+    object-fit: cover;
+    border: 3px solid var(--secondary);
+    border-radius: 10px;
+}
+
+#name {
+    grid-column-start: 2;
+    grid-column-end: 4;
+    grid-row-start: 1;
+    grid-row-end: 1;
+    margin: 2px;
+}
+
+#description {
+    grid-column-start: 2;
+    grid-column-end: 4;
+    grid-row-start: 2;
+    grid-row-end: 4;
+}
+
+#rating {
+    grid-row-start: 3;
+    
+}
+#follow {
+    grid-row-start: 4;
+}
+
+#friendslist{
+    grid-column-start:1;
+    grid-row-start: 4;
+    
+}
+
+#recipes, #leftovers{
+    margin: 0 10px;
+}
+
+.title{
+    border-bottom: 1px solid var(--light-gray);
+    margin: 15px 0;
+}
+
+#viewFavourites {
+    font-weight: 600;
+    text-decoration: underline;
+}
+
+.overlay {
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    transition: all 0.3s ease-out;
+    background-color: #0000009e;
+    opacity: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: -1;
+
+}
+
+.overlay.active {
+    opacity: 1 !important;
+    z-index: 1;
+}
+
+.container {
+    background-color: var(--primary);
+    border-radius: 10px;
+    width: 80%;
+    height: 80%;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 10px;
+}
+
+
+#favourites-container {
+    overflow: scroll;
+    width: 100%;
+}
+
+.overlay-title{
+    width: 100%;
+    text-align: center;
+    border-bottom: 1px solid var(--background);
+    color: var(--background);
+}
+
+.favourites-container > .recipe-container {
+    color: var(--background);
+}
+
+#settings {
+    grid-row-start: 4;
+}
+
+.aboutme{
+    font-size: small;
+    color: var(--gray);
+    margin: 0;
+}

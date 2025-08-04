@@ -1,0 +1,110 @@
+#random-container {
+    display: flex;
+    width: 80%;
+    margin: 0 10%;
+    height: 175px;
+    flex-direction: row;
+    justify-content: space-evenly;
+    align-items: center;
+    border: 2px solid var(--secondary);
+    border-radius: 16px;
+    position: relative;
+    margin-top: 20px;
+}
+
+#regenerate-recipe {
+    position: absolute;
+    bottom: 5px;
+}
+
+#hot-recipes > h2, #new-recipes > h2{
+    margin:0;
+    text-align: center;
+}
+
+.random-info-container{
+    width: 50%;
+    overflow: hidden;
+    padding: 5px;
+}
+
+.title{
+    margin: 10px 0;
+    text-align: center;
+}
+
+.rPhoto{
+    display: grid;
+    width: 50%;
+    height: 175px;
+    object-fit: cover;
+    border-top-left-radius: 14px;
+    border-bottom-left-radius: 14px;
+}
+
+.rDesc {
+    text-overflow: ellipsis;
+    word-wrap: break-word;
+    overflow: hidden;
+    height: 6em;
+}
+
+.random-info-container > p{
+    font-size: x-small;
+    margin: 2px 0;
+}
+
+.refresher{
+    right: -17px;
+    top: -34px;
+    background: var(--primary);
+    padding: 7px;
+    border: 2px solid var(--secondary);
+    bottom: auto !important;
+    border-radius: 25px;
+    color: var(--background);
+    z-index: 2;
+}
+
+#random-overlay {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-color: var(--background);
+    border-radius: 14px;
+    opacity: 0;
+    transition: all 0.2s linear;
+    z-index: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#random-overlay.deactive {
+    z-index: -1;
+}
+
+#random-overlay.active {
+    opacity: 1;
+    z-index: 1;
+}
+
+.fa-spinner{
+    animation: spin-animation 1.2s infinite;
+}
+
+@keyframes spin-animation {
+    0% {
+      transform: rotate(0deg);
+    }
+    100% {
+      transform: rotate(359deg);
+    }
+}
+
+#create-recipe {
+    width: 100%;
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+}

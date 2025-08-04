@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" type="text/css" href="/css/leftover.css">
+    <link rel="stylesheet" type="text/css" href="/css/global.css">
+    <script src="https://kit.fontawesome.com/8f5ac29544.js" crossorigin="anonymous"></script>
+    <script src="../scripts/header.js" defer></script>
+    <script>const owner = "<%- data.owner %>"</script>
+    <script src="../scripts/global.js" defer></script>
+    <script src="../scripts/leftover.js" defer></script>
+</head>
+<body>
+    <div id="content">
+        <%- include('../templates/header'); %>
+        <div id="main"> 
+            <img class="photo" id="photo" src=<% if (data.image) {%> 
+                "data:image/jpeg;base64,<%- data.image.toString("base64") -%>"
+            <%} else {%>
+                "images/placeholder.png"
+            <% } %>
+                alt="">
+            
+            
+            <h1 class="recipeTitle"> <%-data.title %></h1>
+            <p class="desc"><%- data.description -%></p>
+
+        </div>
+        <button class="button-primary" id="chat"> Chat user</button>
+        <button class="button-primary" id="pickup"> Pick up leftover</button>
+        <%- include('../templates/footer', {nav: "find"}); %>
+    </div>
+</body>
+</html>

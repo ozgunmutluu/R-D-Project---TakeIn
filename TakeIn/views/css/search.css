@@ -1,0 +1,46 @@
+#main {
+    display: flex;
+    flex-direction: column;
+}
+
+#search-container {
+     background-color: white;
+     padding: 5px;
+     border-radius: 15px;
+     width: 90%;
+     display: flex;
+    align-items: center;
+    margin: 15px calc(5% - 5px);
+}
+
+#search {
+    flex: 1;
+    border: 0;
+    height: 2em;
+}
+
+#search-button {
+    padding: 0 4px;
+}
+
+#recipes-list{
+    flex: 1;
+    border-top: 2px solid var(--secondary);
+}
+
+.fa-spinner:before {
+    position: absolute;
+    top: 50%;
+    left: calc(50% - 16px);
+    transform: translate(-50%, -50%);
+    animation: spin-animation 1.2s infinite;
+}
+
+@keyframes spin-animation {
+    0% {
+      transform: rotate(0deg);
+    }
+    100% {
+      transform: rotate(359deg);
+    }
+}

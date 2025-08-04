@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" type="text/css" href="/css/home.css">
+    <link rel="stylesheet" type="text/css" href="/css/global.css">
+    <script src="https://kit.fontawesome.com/8f5ac29544.js" crossorigin="anonymous"></script>
+    <script src="../scripts/header.js" defer></script>
+
+    <script src="../scripts/home.js" defer></script>
+</head>
+<body>
+    <div id="content">
+        <%- include('../templates/header'); %>
+        <div id="main"> 
+            <div id="random-container">
+                <div id="random-overlay" class="deactive">
+                    <i class="fa-solid fa-spinner fa-xl" aria-hidden="true"></i>
+                </div>
+                <p id="regenerate-recipe" class="button-primary">Click me!</p>
+                Want to discover a new recipe? 
+            </div>
+            <div id="hot-recipes">
+                <h2>Hot recipes</h2>
+                <% hotRecipes.forEach(function(data) { %>
+                    <%- include('../templates/recipe', {data, removable: false}); %>
+                <% }); %>
+            </div>
+            <div id="new-recipes">
+                <h2>New recipes</h2>
+                <% newRecipes.forEach(function(data) { %>
+                    <%- include('../templates/recipe', {data, removable: false}); %>
+                <% }); %>
+            </div>
+            <div id="create-recipe">
+                <button class="button-primary">Add your own recipe!</button>
+            </div>
+
+        </div>
+        <%- include('../templates/footer'); %>
+    </div>
+</body>
+</html>

@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" type="text/css" href="/css/chat.css">
+    <link rel="stylesheet" type="text/css" href="/css/global.css">
+    <script src="https://kit.fontawesome.com/8f5ac29544.js" crossorigin="anonymous"></script>
+    <script src="../scripts/header.js" defer></script>
+    <script src="../scripts/chat.js" defer></script>
+    <script src="../scripts/global.js" defer></script>
+</head>
+<body>
+    <div id="content">
+        <%- include('../templates/header'); %>
+        <div id="main">    
+            <div id="profile">
+                <img id="profile-picture" src=<% if (reciever.picture) {%> 
+                    "data:image/jpeg;base64,<%- reciever.picture.toString("base64") -%>"
+                <%} else {%>
+                    "images/profile.png"
+                <% } %>
+                alt="">
+
+                <h2><%-reciever.firstName %> <%-reciever.lastName%> </h2>
+            </div>
+            <div id="messages">
+
+
+                <% messages.forEach((message) => { %>
+                    <div class="message <% if (message.reciever.toString() == reciever._id.toString()) { %>
+                        send
+                     <% } else { %>
+                      recieved
+                    <% } %>">
+                        <p> <%- message.message%></p>
+                        <p class="time"><%- [message.createdAt.getHours(),message.createdAt.getMinutes()].join(':')+' '+
+                            [message.createdAt.getDate(),
+                            message.createdAt.getMonth()+1,
+                            message.createdAt.getFullYear()].join('/');
+                            
+                            %></p>
+                    </div>
+
+                <%})%>
+
+            </div>
+            <div id="chat-container">
+                <input id="chat" placeholder="Type a message...">
+                <i id="chat-button" class="fa-solid fa-paper-plane fa-xl"></i>
+            </div>
+
+        </div>
+        <%- include('../templates/footer', {nav: "chat"}); %>
+    </div>
+</body>
+</html>

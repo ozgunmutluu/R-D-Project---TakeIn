@@ -1,0 +1,92 @@
+#main {
+    display: flex;
+}
+
+.photo {
+    width: 40vw;
+    height: 40vw;
+    object-fit: cover;
+    border: 3px solid var(--secondary);
+    border-radius: 10px;
+    margin-right: 5px;
+    max-width: 250px;
+    max-height: 250px;
+}
+
+.inputfile {
+    /* visibility: hidden etc. wont work */
+    width: 0.1px;
+    height: 0.1px;
+    opacity: 0;
+    overflow: hidden;
+    position: absolute;
+    z-index: -1;
+}
+.inputfile:focus + label {
+    /* keyboard navigation */
+    outline: 1px dotted #000;
+    outline: -webkit-focus-ring-color auto 5px;
+}
+.inputfile + label * {
+pointer-events: none;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding: 10px;
+    flex: 1;
+    position: relative;
+    align-items: center;
+}
+
+.img-container {
+    display: flex;
+    align-content: center;
+    flex-direction: row;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+}
+
+.info-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 10px;
+}
+
+.input-container {
+    position: relative;
+    width: 100%;
+}
+
+.input-label {
+    position: absolute;
+    top: -7px;
+    left: 5px;
+    padding: 1px 5px;
+    background-color: var(--background);
+    font-size: small;
+}
+
+.input-container > input {
+    padding: 10px 10px 6px 10px;
+    font-size: medium;
+    background: var(--background);
+    border: 1px solid var(--gray);
+    border-radius: 5px;
+}
+
+
+#description {
+    width: 100%;
+    padding-top: 12px;
+}
+
+#submit {
+    position:absolute;
+    bottom: 0px;
+    width: 30%;
+}

@@ -1,0 +1,34 @@
+<div class="recipe-container" id="<%- data._id %>">
+    <img class="recipe-photo" src=<% if (data.image) {%> 
+            "data:image/jpeg;base64,<%- data.image.toString("base64") -%>"
+        <%} else {%>
+            "images/placeholder.png"
+        <% } %>
+        alt="">
+    <div class="recipe-data">
+        <p><b><%- data.title -%></b></p>
+        <p>
+            <% for(var i=0; i<5; i++) {%>
+                <% if(i < data.rating){ %>
+                    ★
+                <% } else {%>
+                    ☆
+                <% } %>
+            <% } %>
+            (<%- data.no_ratings -%>)
+        </p>
+        <p> Nutri-Score: <%- data.nutriscore -%>/5</p>
+        <p><%- data.description -%></p>
+    </div>
+    <% if(data.no_people){ %>
+        <div class="no_people">
+            <i class="fa-solid fa-user fa-lg"></i>
+            <%-data.no_people%>
+        </div>
+
+    <%}%>
+    <% if(removable){ %>
+        <i class="fa-solid fa-xmark fa-lg" style="margin:10px;"></i>
+    <% } %>
+</div>
+

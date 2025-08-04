@@ -1,0 +1,13 @@
+<div class="leftover-container" id="<%- data.id %>" data-name="<%- data.title %>">
+    <img class="leftover-photo" src=<% if (data.image) {%> 
+            "data:image/jpeg;base64,<%- data.image.toString("base64") -%>"
+        <%} else {%>
+            "images/placeholder.png"
+        <% } %>
+        alt="">
+    <div class="leftover-data">
+        <p><b><%- data.title -%></b></p>
+        <p><%- data.description -%></p>
+    </div>
+</div>
+

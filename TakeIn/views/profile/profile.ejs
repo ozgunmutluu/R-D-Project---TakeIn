@@ -1,0 +1,115 @@
+ <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" type="text/css" href="/css/profile.css">
+    <link rel="stylesheet" type="text/css" href="/css/global.css">
+    <script src="https://kit.fontawesome.com/8f5ac29544.js" crossorigin="anonymous"></script>
+    <script src="../scripts/header.js" defer></script>
+    <script src="/scripts/global.js" defer></script>
+    <script src="/scripts/profile.js" defer></script>
+</head>
+<body>
+    <div id="content">
+        <%- include('../templates/header'); %>
+        <div id="main">
+            <div id="details">
+                <img id="profile-picture" src=<% if (user.picture) {%> 
+                    "data:image/jpeg;base64,<%- user.picture.toString("base64") -%>"
+                <%} else {%>
+                    "images/profile.png"
+                <% } %>
+                alt="">
+                <h2 id="name"><%- user.firstName + " " + user.lastName %> </h2>
+                <div id="rating">
+                    <% for(var i=0; i<5; i++) {%>
+                        <% if(i+1 <= user.rating){ %>
+                            ★
+                        <% } else {%>
+                            ☆
+                        <% } %>
+                    <% } %>
+                </div>
+                <div id="description">
+                    <% if(user.description) { %>
+                        <p class="aboutme">About me:</p>
+                        <%- user.description %>
+                    <%}else {%>
+                        This user has no description about themselves.
+                    <%}%>
+                    
+                </div>
+
+                <button id="friendslist" class="button-primary">Following</button>
+                <% if(isOwner) {%>
+                    <button id="settings" class="button-primary">Edit</button>
+                <% } else if(followMethod != ""){ %>
+                    <button id="follow" class="button-primary" data-method="<%-followMethod%>">
+                        <% if (followMethod=="POST") { %>
+                            Follow
+                         <% } else { %>
+                            Unfollow
+                        <% } %>
+                    </button>
+                <%}%>
+            </div>
+            
+            <div id="leftovers">
+                <h2 class="title">Leftovers</h2>
+
+                <% if(leftovers.length == 0) { %> 
+                    This user has currently no leftovers
+                <%} else  {%>
+                    <% leftovers.forEach(function(data) { %>
+                        <%- include('../templates/leftover', {data}); %>
+                    <% }); %>
+                <%}%>
+                <% if(isOwner) {%>
+                    <button id="leftover" class="button-primary">Add a leftover</button>
+                <%}%>
+            </div>
+
+            <div id="recipes">
+                <h2 class="title">Favourite recipes</h2>
+                <% if(favouriteRecipes.length > 0) {%><%- include('../templates/recipe', {data: favouriteRecipes[0], removable: isOwner}); %> <%}%>
+                <% if(favouriteRecipes.length > 1) {%><%- include('../templates/recipe', {data: favouriteRecipes[1], removable: isOwner}); %> <%}%>
+                <div id="viewFavourites">View all</div>
+            </div>
+        </div>
+        <div id="overlay-favourites" class="overlay">
+            <div class="container">
+                <h1 class="overlay-title">Favourite recipes</h1>
+                <div class="favourites-container">
+                    <% favouriteRecipes.forEach(function(data) { %>
+                        <%- include('../templates/recipe', {data, removable: isOwner}); %>
+                    <% }); %>
+                </div>
+            </div>
+        </div>
+
+        <div id="overlay-friends" class="overlay">
+            <div class="container">
+                <h1 class="overlay-title">Friends</h1>
+                <div class="friends-container">
+                    <% followers.forEach(function(data) { %>
+                        <div class="leftover-container" onclick="javascript:window.location = '/profile?id=<%- data.id %>' " id="<%- data.id %>" >
+                            <img class="leftover-photo" src=<% if (data.image) {%> 
+                                    "data:image/jpeg;base64,<%- data.image.toString("base64") -%>"
+                                <%} else {%>
+                                    "images/placeholder.png"
+                                <% } %>
+                                alt="">
+                            <div class="leftover-data">
+                                <p><b><%- data.firstName + " " + data.lastName -%></b></p>
+                            </div>
+                        </div>
+                    <% }); %>
+                </div>
+            </div>
+        </div>
+        <%- include('../templates/footer', { nav: "profile"}); %>
+    </div>
+</body>
+</html>

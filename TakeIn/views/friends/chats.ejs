@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" type="text/css" href="/css/chats.css">
+    <link rel="stylesheet" type="text/css" href="/css/global.css">
+    <script src="https://kit.fontawesome.com/8f5ac29544.js" crossorigin="anonymous"></script>
+    <script src="../scripts/header.js" defer></script>
+    <script src="../scripts/chats.js" defer></script>
+</head>
+<body>
+    <div id="content">
+        <%- include('../templates/header'); %>
+        <div id="main">   
+            <div class="filters">
+                <button id="activate-search" class="button-primary"> Start chat</button>
+            </div> 
+            <% data.forEach(el => { %>
+                <div onclick="javascript:window.location = '/chat?id=<%-el.id%>'" class="profile">
+                    <img class="profile-picture" src=<% if (el.picture) {%> 
+                        "data:image/jpeg;base64,<%- el.picture.toString("base64") -%>"
+                    <%} else {%>
+                        "images/profile.png"
+                    <% } %>
+                    alt="">
+    
+                    <div class="profile-data">
+                        <h2 class="name"><%-el.firstName %> <%-el.lastName%> </h2>
+                        <p class="message"> <%-el.message %></p>
+                        <p class="time"> <%-
+                        [el.createdAt.getHours(),el.createdAt.getMinutes()].join(':')+' '+
+                            [el.createdAt.getDate(),
+                            el.createdAt.getMonth()+1,
+                            el.createdAt.getFullYear()].join('/'); %>
+                        </p>
+                    </div>
+                </div>
+
+            <%})%>
+
+        </div>
+        <%- include('../templates/footer', {nav: "chat"}); %>
+
+        <div id="overlay">
+            <div id="overlay-container">
+                <h3>Enter the username of the user.</h3>
+                <div>
+                    <p id="error-message"></p>
+                    <input type="text" id="search-bar" placeholder="Username">
+                </div>
+                <button id="search-button" class="button-primary">Start a chat!</button>
+            </div>
+        </div>
+
+    </div>
+</body>
+</html>

@@ -1,0 +1,25 @@
+#main{
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+body{
+    background-color: var(--primary);
+}
+
+#logo {
+    width: 80%;
+    max-width: 40em;
+    margin-top: 5em;
+}
+
+#loginForm {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    gap: 1em
+}
+
+

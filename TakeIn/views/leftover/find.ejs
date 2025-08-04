@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" type="text/css" href="/css/find.css">
+    <link rel="stylesheet" type="text/css" href="/css/global.css">
+    <script src="https://kit.fontawesome.com/8f5ac29544.js" crossorigin="anonymous"></script>
+    <script src="../scripts/header.js" defer></script>
+    <script src="../scripts/find.js" defer></script>
+</head>
+<body>
+    <div id="content">
+        <%- include('../templates/header'); %>
+        <div id="main"> 
+            <div id="leftover-header">
+                <div id="search-container">
+                    <i id="search-button" class="fa-solid fa-search fa-xl" aria-hidden="true"></i>
+                    <input id="search" placeholder="Search for a leftover" data-np-intersection-state="visible">
+                </div>
+                <button id="create" class="button-primary">+</button>
+            </div>
+            <div id="leftovers">
+                <% if (!data) { %>
+                    <h2>No leftovers found</h2>
+                <% } %>
+                <% data.forEach(function(leftover) { %>
+                    <%- include('../templates/leftover', {data: leftover, removable: false}); %>
+                <% }); %>
+            </div> 
+        </div>
+        <%- include('../templates/footer', {nav: "location"}); %>
+    </div>
+</body>
+</html>

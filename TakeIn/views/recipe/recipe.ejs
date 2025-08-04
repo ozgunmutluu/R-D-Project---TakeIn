@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" type="text/css" href="/css/recipe.css">
+    <link rel="stylesheet" type="text/css" href="/css/global.css">
+    <script src="https://kit.fontawesome.com/8f5ac29544.js" crossorigin="anonymous"></script>
+    <script src="../scripts/header.js" defer></script>
+    <script src="../scripts/global.js" defer></script>
+    <script src="../scripts/recipe.js" defer></script>
+</head>
+<body>
+    <div id="content">
+        <%- include('../templates/header'); %>
+        <div id="main">
+            <div class="actions">
+                <% if (favourite > 1) { %>
+                    <i class="fa-solid fa-star fa-xl checked" id="star-recipe"></i>
+                <% } else if (favourite > 0) { %>
+                    <i class="fa-solid fa-star fa-xl" id="star-recipe"></i>
+                <% } %>
+
+                <% if (canAdd) { %>
+                    <i class="fa-solid fa-cart-plus fa-xl" id="add-cart">
+                    </i>  
+                <% } %>
+            </div>
+
+            <img class="photo" id="photo" src=<% if (data.image) {%> 
+                "data:image/jpeg;base64,<%- data.image.toString("base64") -%>"
+            <%} else {%>
+                "images/placeholder.png"
+            <% } %>
+                alt="">
+            
+            <div class="title-container">
+                <h1 class="recipeTitle"> <%-data.title %></h1>
+                <div id="people-container">
+                    <i class="fa-solid fa-user fa-lg" ></i>
+                    <p id="no_people">4</p>
+                    <div class="adders"> 
+                        <i class="fa-solid fa-plus fa-2xs" id="add-people"></i>
+                        <i class="fa-solid fa-minus fa-2xs" id="minus-people"></i>
+                    </div>
+                </div>
+            </div>
+            <div class="ratings">
+                <p> 
+                    <% for(var i=0; i<5; i++) {%>
+                        <% if(i+1 <= data.rating){ %>
+                            ★
+                        <% } else {%>
+                            ☆
+                        <% } %>
+                    <% } %>
+                    (<%- data.no_ratings -%>)
+                </p>
+            </div>
+            <p> Nutri-Score: <%- data.nutriscore -%>/5</p>
+            <p class="desc"><%- data.description -%></p>
+
+            <h2>Ingredients</h2>
+            <ul>
+                <% for(ingredient of data.ingredients) {%>
+                    <li><a href="<%- ingredient.link %>" target="_blank"><%- ingredient.name %></a></li>
+                <% } %>
+            </ul>
+
+            <h2>Recipe</h2>
+            <ol>
+                <% for(step of data.steps) {%>
+                    <li><%- step %></li>
+
+                <% } %>
+            </ol>
+
+            
+        </div>
+         
+        <bold id="leave-review" <% if (canEdit) { %> canEdit <% } %> >  
+            <% if (canEdit) { %>
+                Edit your recipe
+            <% } else if (!userReview) { %>
+                Like this recipe? Leave a review.
+            <% } else {%>
+                Your Review:
+                <span number=1 class="fa fa-star checked"></span>
+                <span number=2 class="fa fa-star <%if(userReview?.rating >=  2){%>checked<%}%>"></span>
+                <span number=3 class="fa fa-star <%if(userReview?.rating >=  3){%>checked<%}%>"></span>
+                <span number=4 class="fa fa-star <%if(userReview?.rating >=  4){%>checked<%}%>"></span>
+                <span number=5 class="fa fa-star <%if(userReview?.rating ==  5){%>checked<%}%>"></span>
+            <% } %>
+        </bold>
+        <%- include('../templates/footer', {nav: ""}); %>
+
+        <div id="write-review">
+            <div class="review-container">
+                <h1>What did you think?</h1>
+                <div class="review-data">
+                    <div id="star-ratings">
+                        <span number=1 class="fa fa-star checked"></span>
+                        <span number=2 class="fa fa-star <%if(userReview?.rating >=  2){%>checked<%}%>"></span>
+                        <span number=3 class="fa fa-star <%if(userReview?.rating >=  3){%>checked<%}%>"></span>
+                        <span number=4 class="fa fa-star <%if(userReview?.rating >=  4){%>checked<%}%>"></span>
+                        <span number=5 class="fa fa-star <%if(userReview?.rating ==  5){%>checked<%}%>"></span>
+                    </div>
+                    <textarea id="review-text" rows="5" ><%-userReview?.description%></textarea>
+                </div>
+                <button id="submit-review" class="button-primary">Submit</button>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

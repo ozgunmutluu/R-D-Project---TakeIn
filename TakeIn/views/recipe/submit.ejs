@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" type="text/css" href="/css/submit.css">
+    <link rel="stylesheet" type="text/css" href="/css/global.css">
+    <script src="https://kit.fontawesome.com/8f5ac29544.js" crossorigin="anonymous"></script>
+    <script src="../scripts/header.js" defer></script>
+
+    <script src="../scripts/submit.js" defer></script>
+</head>
+<body>
+    <div id="content">
+        <%- include('../templates/header'); %>
+        <div id="main">
+            <form id="recipe-form" action="/recipe/submit" method="post" enctype="multipart/form-data">
+                <input type="text" name="id" value="<%- data.id %>" hidden>
+                <div class="head">
+                    <input type="file" name="photo" accept="image/*" id="photo-upload" class="inputfile">
+                    <label for="photo-upload">
+                        <img class="photo" id="photo-preview" src=<% if (data.image) {%> 
+                                "data:image/jpeg;base64,<%- data.image.toString("base64") -%>"
+                            <%} else {%>
+                                "/images/placeholder.png"
+                            <% } %>
+                                alt="">
+                    </label>
+                    <div class="input-container">
+                        <div class="input-label">Title</div>
+                        <div id="title-edit" contenteditable="true"><%- data.title -%></div>
+                    </div>
+                    <input type="text" name="title" id="title" hidden>
+                </div>
+                <div class="input-container description">
+                    <div class="input-label">Description</div>
+                    <textarea type="text" id="description" rows="5" name="description" placeholder="Add a description"><%- data.description -%></textarea>
+                </div>
+
+                <div id="ingredients" class="input-container"> 
+                    <div class="input-label">Ingredients</div>
+                    <% for (i = 1; i < data.ingredients.length+1; i++) { %>
+                        <div id="ingredient-<%-i-%>">
+                            <input type="text" name="name-<%-i-%>" value="<%- data.ingredients[i-1].name -%>">
+                            <input type="text" name="link-<%-i-%>" value="<%- data.ingredients[i-1].link -%>">
+                        </div>
+                    <% } %>
+
+                    <div id="ingredient-<%-data.ingredients.length+1-%>">
+                        <input type="text" name="name-<%-data.ingredients.length+1-%>" placeholder="New ingredient">
+                        <input type="text" name="link-<%-data.ingredients.length+1-%>" placeholder="New product">
+                    </div>
+
+                </div>
+                <div class="steps input-container"> 
+                    <div class="input-label">Steps</div>
+                    <div id="steps">
+                        <% for (i = 1; i < data.steps.length+1; i++) { %>
+                            <input type="text" name="step-<%-i-%>" value="<%- data.steps[i-1] -%>">
+                        <% } %>
+                        <input type="text" name="step-<%-data.steps.length+1-%>" placeholder="New step">
+                    </div>
+                </div>
+                <input type="submit" class="button-primary" value="Save">
+            </form>  
+        </div>
+        <%- include('../templates/footer', {nav: ""}); %>
+    </div>
+</body>
+</html>

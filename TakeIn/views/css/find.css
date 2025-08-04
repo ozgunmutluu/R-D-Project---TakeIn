@@ -1,0 +1,28 @@
+#leftover-header{
+    display: flex;
+    align-items: center;
+}
+
+.leftover-container.hidden {
+    display: none;
+}
+
+#search-container {
+    background-color: white;
+    padding: 5px;
+    border-radius: 15px;
+    width: 90%;
+    display: flex;
+   align-items: center;
+   margin: 15px calc(5% - 5px);
+}
+
+#search {
+   flex: 1;
+   border: 0;
+   height: 2em;
+}
+
+#search-button {
+   padding: 0 4px;
+}

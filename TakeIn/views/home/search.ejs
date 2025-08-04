@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" type="text/css" href="/css/search.css">
+    <link rel="stylesheet" type="text/css" href="/css/global.css">
+    <script src="https://kit.fontawesome.com/8f5ac29544.js" crossorigin="anonymous"></script>
+    <script src="../scripts/header.js" defer></script>
+    <script src="../scripts/search.js" defer></script>
+</head>
+<body>
+    <div id="content">
+        <%- include('../templates/header'); %>
+        <div id="main">  
+            <div id="search-container">
+                <i id="search-button" class="fa-solid fa-search fa-xl"></i>
+                <input id="search" placeholder="Search for a recipe...">
+            </div>
+            <div id="recipes-list">
+                
+            </div>
+        </div>
+        <%- include('../templates/footer'); %>
+    </div>
+</body>
+</html>

@@ -1,0 +1,120 @@
+.photo {
+    width: 40vw;
+    height: 40vw;
+    object-fit: cover;
+    border: 3px solid var(--secondary);
+    border-radius: 10px;
+    margin-right: 5px;
+    max-width: 160px;
+    max-height: 160px;
+}
+
+.inputfile {
+    /* visibility: hidden etc. wont work */
+    width: 0.1px;
+    height: 0.1px;
+    opacity: 0;
+    overflow: hidden;
+    position: absolute;
+    z-index: -1;
+}
+.inputfile:focus + label {
+    /* keyboard navigation */
+    outline: 1px dotted #000;
+    outline: -webkit-focus-ring-color auto 5px;
+}
+.inputfile + label * {
+pointer-events: none;
+}
+
+.description {
+
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+
+}
+
+#steps, #ingredients {
+display: flex;
+flex-direction: column;
+padding: 5px;
+gap: 2px;
+}
+
+#ingredients > div {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+
+.head {
+    display: flex;
+    align-items: center;
+}
+
+#title-edit {
+    word-break: break-all;
+    margin-right: 5px;
+}
+
+.input-container {
+    position: relative;
+    width: 100%;
+}
+
+.input-label {
+    position: absolute;
+    top: -7px;
+    left: 5px;
+    padding: 1px 5px;
+    background-color: var(--background);
+    font-size: small;
+}
+
+.input-container > input, #title-edit, #description {
+    padding: 10px 10px 6px 10px;
+    font-size: medium;
+    background: var(--background);
+    border: 1px solid var(--gray);
+    border-radius: 5px;
+}
+
+#description {
+    width: calc(100% - 42px);
+}
+
+.description {
+    display: flex;
+    justify-content: center;
+}
+
+#ingredients.input-container, .steps.input-container {
+    padding-top: 15px;
+    border: 1px solid var(--gray);
+    margin: 10px;
+    border-radius: 5px;
+    width: calc(100% - 32px);
+}
+
+#steps > input {
+    width: calc(100% - 12px)
+}
+
+#ingredients.input-container {
+    width: calc(100% - 32px);
+}
+
+.steps.input-container{
+    width: calc(100% - 22px);
+}
+
+.input-container input {
+    background: var(--background);
+    border: 1px solid var(--light-gray);
+    padding: 3px;
+    border-radius: 5px
+}

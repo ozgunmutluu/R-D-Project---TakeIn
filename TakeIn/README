@@ -1,0 +1,10 @@
+TakeIn Project
+
+Setup:
+1. Make sure node is installed.
+2. Run 'npm i' in terminal to install dependencies
+3. Run 'node index.js' to start the server
+
+The project is also available on: takein.onrender.com
+
+Hope you enjoy!

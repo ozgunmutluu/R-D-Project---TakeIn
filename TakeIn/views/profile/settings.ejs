@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" type="text/css" href="/css/settings.css">
+    <link rel="stylesheet" type="text/css" href="/css/global.css">
+    <script src="https://kit.fontawesome.com/8f5ac29544.js" crossorigin="anonymous"></script>
+    <script src="../scripts/header.js" defer></script>
+    <script src="../scripts/settings.js" defer></script>
+</head>
+<body>
+    <div id="content">
+        <%- include('../templates/header'); %>
+        <div id="main">
+            <form id="recipe-form" action="/profile/settings" method="post" enctype="multipart/form-data">
+                <input type="text" name="id" value="<%- user.id %>" hidden>
+                <div class="img-container">
+                    <input type="file" name="photo" accept="image/*" id="photo-upload" class="inputfile">
+                    <label for="photo-upload">
+                        <img class="photo" id="photo-preview" src=<% if (user.image) {%> 
+                                "data:image/jpeg;base64,<%- data.image.toString("base64") -%>"
+                            <%} else {%>
+                                "/images/profile.png"
+                            <% } %>
+                                alt="">
+                    </label>
+                    <div class="info-container">
+                        <div class="input-container">
+                            <div class="input-label">First name</div>
+                            <input type="text" name="firstName" value="<%- user.firstName -%>">
+                        </div>
+                        <div class="input-container">
+                            <div class="input-label">Last name</div>
+                            <input type="text" name="lastName" value="<%- user.lastName -%>">
+                        </div>
+                        <div class="input-container">
+                            <div class="input-label">Username</div>
+                            <input type="text" name="username" value="<%- user.username -%>">
+                        </div>
+                        <div class="input-container">
+                            <div class="input-label">Adress</div>
+                            <input type="text" name="address" value="<%- user.adress -%>">
+                        </div>
+                    </div>
+                </div>
+                <div class="input-container">
+                    <div class="input-label">About me</div>
+                    <textarea type="text" id="description" rows="5" name="description"> <%- user.description -%></textarea>
+                </div>
+                
+
+                <input id="submit" class="button-primary" type="submit" value="Save">
+            </form>  
+        </div>
+        <%- include('../templates/footer', {nav: "profile"}); %>
+    </div>
+</body>
+</html>

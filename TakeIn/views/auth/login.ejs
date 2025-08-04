@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>login</title>
+    <link rel="stylesheet" type="text/css" href="/css/login.css">
+    <link rel="stylesheet" type="text/css" href="/css/global.css">
+    <script src="https://kit.fontawesome.com/8f5ac29544.js" crossorigin="anonymous"></script>
+    <script src="../scripts/header.js" defer></script>
+
+</head>
+<body>
+    <div id="content">
+        <div id="main">
+            <img id="logo" src="images/logo.png" alt="">
+            <form id="loginForm" action="/login" method="POST">
+                <% if (messages.error){ %>
+                    <%= messages.error %>
+                    <% } %>
+                <div class="form-input">
+                    <p>Email:</p>    
+                    <input type="text" name="email">
+                </div>
+                <div class="form-input">
+                    <p>Password:</p>
+                    <input type="password" name="password">    
+                </div>
+                <button class="button-primary">login</button>
+            </form>  
+        </div>
+    </div>  
+</body>
+</html>
+  

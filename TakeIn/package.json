@@ -1,0 +1,28 @@
+{
+  "name": "takein",
+  "version": "1.0.0",
+  "description": "TakeIn • R&D Project",
+  "main": "index.js",
+  "scripts": {
+    "start": "nodemon index.js --ignore ./views/"
+  },
+  "author": "Tijn Giesberts",
+  "license": "ISC",
+  "dependencies": {
+    "bcrypt": "^6.0.0",
+    "body-parser": "^1.20.2",
+    "connect-busboy": "^1.0.0",
+    "dotenv": "^16.4.5",
+    "ejs": "^3.1.10",
+    "express": "^4.19.2",
+    "express-fileupload": "^1.5.0",
+    "express-flash": "^0.0.2",
+    "express-session": "^1.18.0",
+    "mongoose": "^8.3.2",
+    "passport": "^0.7.0",
+    "passport-local": "^1.0.0"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.0"
+  }
+}
